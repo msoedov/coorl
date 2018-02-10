@@ -9,6 +9,7 @@ import (
 )
 
 var curlPost = "curl -v  --request POST -H 'X-Custom-Header: myvalue' -H 'Content-Type: application/json' --data '{\"title\":\"Buy cheese and bread for breakfast.\"}' http://restapi3.apiary.io/notes"
+var httpiePost = "echo '{\"title\":\"Buy cheese and bread for breakfast.\"}' | http -v POST http://restapi3.apiary.io/notes X-Custom-Header:myvalue Content-Type:application/json"
 
 func Test(t *testing.T) {
 	g := Goblin(t)
@@ -27,6 +28,10 @@ func Test(t *testing.T) {
 		g.It("Should parse curl", func() {
 			curlCmd := AsCurl(req, b)
 			g.Assert(curlCmd).Eql(curlPost)
+		})
+		g.It("Should parse httpie", func() {
+			curlCmd := AsHttpie(req, b)
+			g.Assert(curlCmd).Eql(httpiePost)
 		})
 	})
 	return
