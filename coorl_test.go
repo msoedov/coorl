@@ -25,6 +25,7 @@ func Test(t *testing.T) {
 		if err != nil {
 			panic(err)
 		}
+
 		g.It("Should parse curl", func() {
 			curlCmd := AsCurl(req, b)
 			g.Assert(curlCmd).Eql(curlPost)
