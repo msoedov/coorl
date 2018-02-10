@@ -22,6 +22,8 @@ if err != nil {
 fmt.Printf("%s\n", coorl.AsCurl(req, b))
 
 ```
+
+Output
 ```bash
 curl -v  --request POST -H 'X-Custom-Header: myvalue' -H 'Content-Type: application/json' --data '{\"title\":\"Buy cheese and bread for breakfast.\"}' http://restapi3.apiary.io/notes
 ```
