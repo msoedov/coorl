@@ -39,7 +39,7 @@ echo '{\"title\":\"Buy cheese and bread for breakfast.\"}' | http -v POST http:/
 ```
 ### Prerequisites
 ```go
-package coorl // import "github.com/msoedov/coorlg"
+package coorl // import "github.com/msoedov/coorl"
 
 func AsCurl(r *http.Request, body io.ReadSeeker) (cmd string)
 func AsHttpie(r *http.Request, body io.ReadSeeker) (cmd string)
