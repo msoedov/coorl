@@ -5,6 +5,7 @@ import (
 	"io"
 	"io/ioutil"
 	"net/http"
+	"strings"
 )
 
 func AsCurl(r *http.Request, body io.ReadSeeker) (cmd string) {
@@ -21,7 +22,8 @@ func AsCurl(r *http.Request, body io.ReadSeeker) (cmd string) {
 		body.Seek(0, 0)
 		payload, err := ioutil.ReadAll(body)
 		if err == nil {
-			cmd += fmt.Sprintf(" --data '%s'", payload)
+			data := strings.Replace(string(payload), "\\\"", "\"", -1)
+			cmd += fmt.Sprintf(" --data '%s'", data)
 		}
 	}
 	cmd += " " + r.URL.String()
